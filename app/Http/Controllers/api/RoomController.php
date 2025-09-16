@@ -3,30 +3,30 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Plant;
+use App\Models\Room;
 use Illuminate\Http\Request;
 
-class PlantController extends Controller
+class RoomController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Plant::all();
+        return Room::all();
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): Plant
+    public function store(Request $request): Room
     {
         $validated = $request->validate([
-            'name' => 'required',
-            'watering_threshold' => 'required',
-            'room_id' => 'required|exists:rooms,id',
+            'house' => 'required|string|max:255',
+            'room' => 'required|string|max:255',
+            'admin' => 'required|exists:users,id',
         ]);
-        return Plant::create($validated);
+        return Room::create($validated);
     }
 
     /**
@@ -34,7 +34,7 @@ class PlantController extends Controller
      */
     public function show(string $id)
     {
-        return Plant::findOrFail($id);
+        return Room::findOrFail($id);
     }
 
     /**
@@ -43,11 +43,11 @@ class PlantController extends Controller
     public function update(Request $request, string $id): bool
     {
         $validated = $request->validate([
-            'name' => 'sometimes',
-            'watering_threshold' => 'sometimes',
-            'room_id' => 'sometimes|exists:rooms,id',
+            'house' => 'sometimes|string|max:255',
+            'room' => 'sometimes|string|max:255',
+            'admin' => 'sometimes|exists:users,id',
         ]);
-        return Plant::findOrFail($id)->update($validated);
+        return Room::findOrFail($id)->update($validated);
     }
 
     /**
@@ -55,6 +55,6 @@ class PlantController extends Controller
      */
     public function destroy(string $id): ?bool
     {
-        return Plant::findOrFail($id)->delete();
+        return Room::findOrFail($id)->delete();
     }
 }

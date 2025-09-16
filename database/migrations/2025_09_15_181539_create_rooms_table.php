@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('plants', function (Blueprint $table) {
+        Schema::create('rooms', function (Blueprint $table) {
             $table->id();
+            $table->string('house');
+            $table->string('room');
+            $table->foreignId('admin')->constrained('users')->onDelete('cascade');
             $table->timestamps();
-            $table->foreignId('room_id')->constrained('rooms')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('name');
-            $table->float('watering_threshold');
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('plants');
+        Schema::dropIfExists('rooms');
     }
 };

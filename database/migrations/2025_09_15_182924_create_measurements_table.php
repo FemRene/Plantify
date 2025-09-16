@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('plants', function (Blueprint $table) {
+        Schema::create('measurements', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('plant_id')->constrained('plants')->onDelete('cascade')->onUpdate('cascade');
+            $table->float('humidity');
+            $table->float('temperature');
+            $table->float('light');
+            $table->float('water');
             $table->timestamps();
-            $table->foreignId('room_id')->constrained('rooms')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('name');
-            $table->float('watering_threshold');
         });
     }
 
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('plants');
+        Schema::dropIfExists('measurements');
     }
 };
