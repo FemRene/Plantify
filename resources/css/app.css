@@ -1,10 +1,14 @@
 @import 'tailwindcss';
 @import '../../vendor/livewire/flux/dist/flux.css';
+@import "flyonui/variants.css";
 
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
 @source '../../vendor/livewire/flux/stubs/**/*.blade.php';
+
+@plugin "flyonui";
+@source "../node_modules/flyonui/flyonui.js";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -26,6 +30,11 @@
     --color-accent: var(--color-neutral-800);
     --color-accent-content: var(--color-neutral-800);
     --color-accent-foreground: var(--color-white);
+
+    --color-gradient-start: #EBEFA5;
+    --color-gradient-end: #618B35;
+
+    --color-primary-green: #292F1F !important;
 }
 
 @layer theme {
