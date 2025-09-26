@@ -5,10 +5,7 @@
             <span class="icon-[tabler--chevron-down] dropdown-open:rotate-180 size-4"></span>
         </button>
         <ul class="dropdown-menu dropdown-open:opacity-100 hidden min-w-60" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-default">
-            <li><a class="dropdown-item" href="#">My Profile</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Billing</a></li>
-            <li><a class="dropdown-item" href="#">FAQs</a></li>
+            <li><a class="dropdown-item">coming soon</a></li>
         </ul>
     </div>
 @else
